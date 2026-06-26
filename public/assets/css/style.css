@@ -1,0 +1,139 @@
+:root {
+  --bg: #0B1020;
+  --card: #141B2D;
+  --card-hover: #1B2338;
+
+  --text: #F3F4F6;
+  --text-dim: #9CA3AF;
+
+  --border: #2D3748;
+
+  --secure: #22C55E;
+  --attack: #EF4444;
+  --accent: #6366F1;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+/* LINKS */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* CARD STYLE (used in dashboard/admin) */
+.card, table, .box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  background: var(--card-hover);
+  transition: 0.2s ease;
+}
+
+/* BUTTONS */
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* SECURE / ATTACK LABELS */
+.secure {
+  color: var(--secure);
+  font-weight: bold;
+}
+
+.attack {
+  color: var(--attack);
+  font-weight: bold;
+}
+
+/* INPUTS */
+input {
+  background: #0f1629;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--text);
+  width: 250px;
+}
+
+input:focus {
+  outline: 1px solid var(--accent);
+}
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  text-align: left;
+  color: var(--text-dim);
+}
+
+/* LOGIN / CENTER LAYOUT HELPERS */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.login-box {
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.login-box h2 {
+  margin-bottom: 16px;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.login-box button {
+  width: 100%;
+  margin-top: 8px;
+}
