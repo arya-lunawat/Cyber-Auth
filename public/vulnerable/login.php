@@ -5,99 +5,316 @@ require_once '../../app/Controllers/VulnerableAuthController.php';
 
 SessionManager::start();
 
+if (SessionManager::isLoggedIn()) {
+    header("Location: ../dashboard.php");
+    exit;
+}
+
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $controller =
-        new VulnerableAuthController();
+    $controller = new VulnerableAuthController();
 
-    $result =
-        $controller->login(
-            $_POST['username'],
-            $_POST['password']
-        );
+    $result = $controller->login(
+        $_POST['username'],
+        $_POST['password']
+    );
 
     if ($result['success']) {
 
-        header(
-            'Location: /dashboard.php'
-        );
-
+        header("Location: ../dashboard.php");
         exit;
     }
 
     $error = $result['message'];
 }
+
+require_once '../includes/header.php';
+
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Vulnerable Login</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+<section class="auth-wrapper">
 
-<h1>🚨 Vulnerable Login</h1>
+<div class="auth-container">
 
-<p>
-This page intentionally demonstrates
-SQL Injection vulnerabilities.
+<h1>Vulnerable Login</h1>
+
+<p class="auth-subtitle">
+
+This page intentionally contains a SQL Injection vulnerability for
+educational purposes. Never use this implementation in production.
+
 </p>
 
-<?php if ($error): ?>
-<p style="color:red;">
-    <?= htmlspecialchars($error) ?>
-</p>
-<?php endif; ?>
+<div class="alert alert-warning">
 
-<div class="center">
+<strong>Educational Demonstration</strong>
 
-<form method="POST" class="login-box">
+<br><br>
 
-    <h2>Login</h2>
-
-    <input type="text" name="username" placeholder="Username" required>
-
-    <input type="password" name="password" placeholder="Password" required>
-
-    <button type="submit">Login</button>
-
-</form>
+The authentication query concatenates user input directly into SQL,
+allowing an attacker to manipulate the query.
 
 </div>
 
-<hr>
+<?php if($error): ?>
 
-<h3>Working SQL Injection Payloads</h3>
+<div class="alert alert-danger">
 
-<pre>
-admin' OR 1=1 #
+<?= htmlspecialchars($error) ?>
 
-admin' OR 'a'='a' #
+</div>
 
-admin' OR 1=1 --
-</pre>
+<?php endif; ?>
 
-<hr>
+<form method="POST">
 
-<h4>Why some payloads don't work</h4>
+<div class="form-group">
+
+<label>
+
+Username
+
+</label>
+
+<input
+type="text"
+name="username"
+placeholder="Enter username"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Password
+
+</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter password"
+required>
+
+</div>
+
+<button
+type="submit"
+class="btn btn-danger btn-block">
+
+Login (Vulnerable)
+
+</button>
+
+</form>
+
+<div class="auth-footer">
+
+Need a secure implementation?
+
+<br><br>
+
+<a href="../secure/login.php">
+
+← Secure Login
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="dashboard-card">
+
+<h2>⚠ Vulnerable SQL Query</h2>
+
+<div class="terminal">
+
+SELECT * FROM users
+
+WHERE username='$username'
+
+AND password='$password'
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section1">
+
+<div class="container">
+
+<div class="dashboard-card">
+
+<h2>✅ Working SQL Injection Payloads</h2>
 
 <p>
-Not every SQL Injection payload works against every query.
-The success of an injection depends on:
+
+The following payloads successfully bypass authentication
+with the current vulnerable query.
+
+</p>
+<br>
+
+<div class="terminal">
+
+Username Field: admin' OR '1'='1
+<br>
+Password Field: anything (any value)
+
+</div>
+
+<br>
+<div class="terminal">
+
+Username Field: ' OR ''='
+<br>
+Password Field: ' OR ''='
+
+</div>
+
+<br>
+<div class="terminal">
+
+Username Field: admin' -- 
+<br>
+Password Field: anything (any value)
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="dashboard-card">
+
+<h2>Why don't all payloads work?</h2>
+
+<p>
+
+Real SQL Injection attacks depend on the exact SQL statement,
+database engine and parser behavior.
+
 </p>
 
-<ul>
-    <li>Query structure</li>
-    <li>Database engine (MySQL)</li>
-    <li>Comment syntax</li>
-    <li>Operator precedence (AND vs OR)</li>
+<ul style="margin-top:20px; line-height:2; color:#d1d5db;">
+
+<li>Query structure</li>
+
+<li>MySQL comment syntax (# vs --)</li>
+
+<li>Operator precedence (AND vs OR)</li>
+
+<li>Database version</li>
+
+<li>Whitespace after comments</li>
+
+<li>String termination</li>
+
 </ul>
 
-<p>
-CyberAuth demonstrates real-world behavior where attackers often need
-to test multiple payloads before finding one that successfully bypasses
-authentication.
+<p style="margin-top:20px;">
+
+CyberAuth demonstrates realistic attacker behaviour—
+an attacker often needs to test several payloads before
+finding one that successfully bypasses authentication.
+
 </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="dashboard-card">
+
+<h2>Learning Outcomes</h2>
+
+<div class="stats-grid">
+
+<div class="stat-box">
+
+<h2>①</h2>
+
+<p>
+
+Observe how raw SQL queries are constructed.
+
+</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>②</h2>
+
+<p>
+
+Test multiple SQL Injection payloads.
+
+</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>③</h2>
+
+<p>
+
+Inspect the attack logs generated by each attempt.
+
+</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>④</h2>
+
+<p>
+
+Compare this page with the Secure Login implementation.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<?php require_once '../includes/footer.php'; ?>

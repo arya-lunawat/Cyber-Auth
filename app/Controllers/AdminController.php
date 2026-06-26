@@ -33,8 +33,8 @@ class AdminController
     {
         $result = $this->db->query(
             "SELECT COUNT(*) as total
-             FROM login_logs
-             WHERE success = 1"
+                FROM login_logs
+                WHERE success = 1"
         );
 
         return $result->fetch_assoc()['total'];
@@ -44,8 +44,8 @@ class AdminController
     {
         $result = $this->db->query(
             "SELECT COUNT(*) as total
-             FROM login_logs
-             WHERE success = 0"
+                FROM login_logs
+                WHERE success = 0"
         );
 
         return $result->fetch_assoc()['total'];
@@ -79,6 +79,38 @@ public function getRecentAttacks()
             FROM attack_logs
             ORDER BY id DESC
             LIMIT 10"
+    );
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+public function getAllAttacks()
+{
+    $result = $this->db->query(
+        "SELECT *
+            FROM attack_logs
+            ORDER BY created_at DESC"
+    );
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+public function getAttackTypes()
+{
+    $result = $this->db->query(
+        "SELECT attack_type,
+                COUNT(*) AS total
+            FROM attack_logs
+            GROUP BY attack_type"
+    );
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+public function getAllLogins()
+{
+    $result = $this->db->query(
+        "SELECT *
+         FROM login_logs
+         ORDER BY created_at DESC"
     );
 
     return $result->fetch_all(MYSQLI_ASSOC);

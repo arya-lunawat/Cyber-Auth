@@ -1,7 +1,8 @@
 <?php
 
-require_once '../../app/Controllers/AdminController.php';
 require_once '../../app/Services/SessionManager.php';
+require_once '../../app/Controllers/AdminController.php';
+require_once '../../app/Config/Database.php';
 
 SessionManager::start();
 
@@ -12,9 +13,21 @@ if (
     die("Access denied");
 }
 
-$admin = new AdminController();
+$db = Database::connect();
 
-$logins = $admin->getAllLogins();
+$result = $db->query("
+    SELECT
+        id,
+        username,
+        email,
+        role,
+        created_at,
+        last_login
+    FROM users
+    ORDER BY id ASC
+");
+
+$users = $result->fetch_all(MYSQLI_ASSOC);
 
 require_once '../includes/header.php';
 
@@ -24,19 +37,17 @@ require_once '../includes/header.php';
 
     <div>
 <br>
-        <h1>Login Activity</h1>
+        <h1>Registered Users</h1>
 
         <p>
 
-            Monitor every authentication attempt performed
-            within CyberAuth.
+            View all registered users within CyberAuth.
 
         </p>
 
     </div>
 
 </section>
-
 
 <div class="quick-actions">
 
@@ -46,7 +57,7 @@ require_once '../includes/header.php';
 
         <p>
 
-            Return to the Admin Dashboard.
+            Return to the administrator dashboard.
 
         </p>
 
@@ -62,19 +73,19 @@ require_once '../includes/header.php';
 
     <div class="action-card">
 
-        <h3>Users</h3>
+        <h3>Login Logs</h3>
 
         <p>
 
-            View registered users.
+            View authentication history.
 
         </p>
 
         <br>
 
-        <a href="users.php" class="btn btn-success">
+        <a href="logins.php" class="btn btn-success">
 
-            Users
+            Login Logs
 
         </a>
 
@@ -86,7 +97,7 @@ require_once '../includes/header.php';
 
         <p>
 
-            Inspect SQL Injection attempts.
+            Review SQL Injection attempts.
 
         </p>
 
@@ -102,15 +113,6 @@ require_once '../includes/header.php';
 
 </div>
 
-<?php if(empty($logins)): ?>
-
-<div class="empty">
-
-No login activity has been recorded.
-
-</div>
-
-<?php else: ?>
 
 <div class="table-wrapper">
 
@@ -120,17 +122,17 @@ No login activity has been recorded.
 
 <tr>
 
-<th>Date</th>
+<th>ID</th>
 
 <th>Username</th>
 
-<th>Status</th>
+<th>Email</th>
 
-<th>Method</th>
+<th>Role</th>
 
-<th>IP Address</th>
+<th>Created</th>
 
-<th>User Agent</th>
+<th>Last Login</th>
 
 </tr>
 
@@ -138,59 +140,43 @@ No login activity has been recorded.
 
 <tbody>
 
-<?php foreach($logins as $login): ?>
+<?php foreach($users as $user): ?>
 
 <tr>
 
 <td>
 
-<?= htmlspecialchars($login['created_at']) ?>
+<?= $user['id'] ?>
 
 </td>
 
 <td>
 
-<?= htmlspecialchars($login['username']) ?>
+<?= htmlspecialchars($user['username']) ?>
 
 </td>
 
 <td>
 
-<?php if($login['success']): ?>
+<?= htmlspecialchars($user['email']) ?>
 
-<span class="badge badge-success">
+</td>
 
-SUCCESS
+<td>
 
-</span>
-
-<?php else: ?>
+<?php if($user['role'] === 'admin'): ?>
 
 <span class="badge badge-danger">
 
-FAILED
-
-</span>
-
-<?php endif; ?>
-
-</td>
-
-<td>
-
-<?php if($login['method'] === 'secure'): ?>
-
-<span class="badge badge-success">
-
-SECURE
+ADMIN
 
 </span>
 
 <?php else: ?>
 
-<span class="badge badge-warning">
+<span class="badge badge-info">
 
-VULNERABLE
+USER
 
 </span>
 
@@ -200,13 +186,13 @@ VULNERABLE
 
 <td>
 
-<?= htmlspecialchars($login['ip_address']) ?>
+<?= $user['created_at'] ?>
 
 </td>
 
-<td style="max-width:420px;">
+<td>
 
-<?= htmlspecialchars($login['user_agent']) ?>
+<?= $user['last_login'] ?: 'Never' ?>
 
 </td>
 
@@ -219,7 +205,5 @@ VULNERABLE
 </table>
 
 </div>
-
-<?php endif; ?>
 
 <?php require_once '../includes/footer.php'; ?>

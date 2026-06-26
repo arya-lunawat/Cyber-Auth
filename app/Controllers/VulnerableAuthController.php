@@ -17,13 +17,7 @@ class VulnerableAuthController
     public function login($username, $password)
 {
     // INTENTIONALLY VULNERABLE
-    $query = "
-        SELECT *
-        FROM users
-        WHERE username='$username'
-        AND password='$password'
-        LIMIT 1
-    ";
+    $query = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
 
     foreach ([
         "'",

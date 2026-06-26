@@ -6,6 +6,6 @@ SessionManager::start();
 
 SessionManager::logout();
 
-header("Location: /");
+header("Location: index.php");
 
 exit;

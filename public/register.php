@@ -2,6 +2,7 @@
 
 require_once '../app/Controllers/AuthController.php';
 require_once '../app/Helpers/functions.php';
+require_once 'includes/header.php';
 
 $errors = [];
 $success = false;
@@ -31,56 +32,167 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register - CyberAuth</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+<section class="auth-wrapper">
 
-<h1>Register</h1>
+<div class="auth-container">
 
-<?php if ($success): ?>
+<h1>Create Account</h1>
 
-    <p style="color:green;">
-        Registration successful.
-    </p>
+<p class="auth-subtitle">
+
+Create a CyberAuth account to explore both
+secure authentication and SQL Injection demonstrations.
+
+</p>
+
+<?php if($success): ?>
+
+<div class="alert alert-success">
+
+✅ Registration completed successfully.
+
+<br><br>
+
+<a href="secure/login.php" class="btn btn-success">
+
+Proceed to Secure Login
+
+</a>
+
+</div>
 
 <?php endif; ?>
 
-<?php if (!empty($errors)): ?>
+<?php if(!empty($errors)): ?>
 
-    <div style="color:red;">
+<div class="alert alert-danger">
 
-        <?php foreach ($errors as $error): ?>
+<strong>Please fix the following:</strong>
 
-            <p><?= e($error) ?></p>
+<ul style="margin-top:12px; padding-left:20px;">
 
-        <?php endforeach; ?>
+<?php foreach($errors as $error): ?>
 
-    </div>
+<li><?= e($error) ?></li>
+
+<?php endforeach; ?>
+
+</ul>
+
+</div>
 
 <?php endif; ?>
 
-<div class="center">
+<form method="POST">
 
-<form method="POST" class="login-box">
+<div class="form-group">
 
-    <h2>Register</h2>
+<label>
 
-    <input type="text" name="username" placeholder="Username" value="<?= e($username) ?>">
+Username
 
-    <input type="email" name="email" placeholder="Email" value="<?= e($email) ?>">
+</label>
 
-    <input type="password" name="password" placeholder="Password">
+<input
+type="text"
+name="username"
+value="<?= e($username) ?>"
+placeholder="Enter username"
+required>
 
-    <input type="password" name="confirm_password" placeholder="Confirm Password">
+</div>
 
-    <button type="submit">Register</button>
+<div class="form-group">
+
+<label>
+
+Email Address
+
+</label>
+
+<input
+type="email"
+name="email"
+value="<?= e($email) ?>"
+placeholder="Enter email"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Password
+
+</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter password"
+required>
+
+<div class="password-hint">
+
+Minimum 8 characters recommended.
+Use uppercase, lowercase,
+numbers and symbols for stronger security.
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Confirm Password
+
+</label>
+
+<input
+type="password"
+name="confirm_password"
+placeholder="Confirm password"
+required>
+
+</div>
+
+<button
+type="submit"
+class="btn btn-primary btn-block">
+
+Create Account
+
+</button>
 
 </form>
 
+<div class="auth-footer">
+
+Already have an account?
+
+<br><br>
+
+<a href="secure/login.php">
+
+Secure Login
+
+</a>
+
+&nbsp; | &nbsp;
+
+<a href="vulnerable/login.php">
+
+Vulnerable Login
+
+</a>
+
 </div>
-</body>
-</html>
+
+</div>
+
+</section>
+
+<?php require_once 'includes/footer.php'; ?>
