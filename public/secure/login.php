@@ -38,7 +38,7 @@ require_once '../includes/header.php';
 
     <div class="auth-container">
 
-        <h1>🔒 Secure Login</h1>
+        <h1>Secure Login</h1>
 
         <p class="auth-subtitle">
 
