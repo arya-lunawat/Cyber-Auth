@@ -2,6 +2,22 @@
 
 function env($key, $default = null)
 {
+    // Railway / Docker environment variables
+    $value = getenv($key);
+
+    if ($value !== false) {
+        return $value;
+    }
+
+    if (isset($_ENV[$key])) {
+        return $_ENV[$key];
+    }
+
+    if (isset($_SERVER[$key])) {
+        return $_SERVER[$key];
+    }
+
+    // Local .env fallback
     static $env = null;
 
     if ($env === null) {
@@ -16,7 +32,9 @@ function env($key, $default = null)
 
             foreach ($lines as $line) {
 
-                if (str_starts_with(trim($line), '#')) {
+                $line = trim($line);
+
+                if ($line === '' || str_starts_with($line, '#')) {
                     continue;
                 }
 
