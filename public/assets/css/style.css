@@ -47,7 +47,7 @@ body{
             rgba(8,8,8,.85),
             rgba(25,0,0,.90)
         ),
-        url("../images/cyber-bg.png");
+        url("../images/cyber-bg.jpg");
 
     background-size: cover;
     background-position: center;
@@ -463,7 +463,7 @@ body{
             rgba(8,8,8,.85),
             rgba(25,0,0,.90)
         ),
-        url("../images/cyber-bg.png");
+        url("../images/cyber-bg.jpg");
 
     background-size: cover;
     background-position: center;
