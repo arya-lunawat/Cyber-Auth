@@ -43,13 +43,16 @@ body{
     font-family:'Inter',sans-serif;
 
     background:
-    linear-gradient(
-    135deg,
-    #09090B 0%,
-    #111827 35%,
-    #1A0E11 70%,
-    #2A0A12 100%
-    );
+        linear-gradient(
+            rgba(8,8,8,.85),
+            rgba(25,0,0,.90)
+        ),
+        url("../images/cyber-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 
     color:var(--text);
 
