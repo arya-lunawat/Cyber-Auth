@@ -162,7 +162,7 @@ AND password='$password'
 
 <div class="dashboard-card">
 
-<h2>✅ Working SQL Injection Payloads</h2>
+<h2>Working SQL Injection Payloads</h2>
 
 <p>
 

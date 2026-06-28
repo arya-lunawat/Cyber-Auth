@@ -1,15 +1,7 @@
-/* =========================================================
-   CyberAuth v2
-   Global Stylesheet
-   Part 1
-   ========================================================= */
-
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* ===========================
-   Variables
-=========================== */
+/*Variables*/
 
 :root{
 
@@ -34,9 +26,7 @@
     --transition:.30s ease;
 }
 
-/* ===========================
-   Reset
-=========================== */
+/*Reset*/
 
 *{
     margin:0;
@@ -68,9 +58,7 @@ body{
     line-height:1.6;
 }
 
-/* ===========================
-   Scrollbar
-=========================== */
+/*Scrollbar*/
 
 ::-webkit-scrollbar{
     width:10px;
@@ -89,9 +77,7 @@ body{
     background:var(--primary-dark);
 }
 
-/* ===========================
-   Typography
-=========================== */
+/*Typography*/
 
 h1{
 
@@ -126,9 +112,7 @@ img{
     max-width:100%;
 }
 
-/* ===========================
-   Layout
-=========================== */
+/*Layout*/
 
 .container{
 
@@ -141,9 +125,7 @@ img{
     padding:80px 0;
 }
 
-/* ===========================
-   Header
-=========================== */
+/*Header*/
 
 header{
 
@@ -159,7 +141,7 @@ header{
     border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-/* Navbar */
+/*Navbar*/
 
 .navbar{
 
@@ -183,9 +165,7 @@ header{
     letter-spacing:.5px;
 }
 
-/* ===========================
-   Navigation
-=========================== */
+/*Navigation*/
 
 nav{
 
@@ -221,9 +201,7 @@ nav a.active{
     color:white;
 }
 
-/* ===========================
-   Buttons
-=========================== */
+/*Buttons*/
 
 .btn{
 
@@ -330,9 +308,7 @@ nav a.active{
     width:100%;
 }
 
-/* ===========================
-   Cards
-=========================== */
+/*Cards*/
 
 .card{
 
@@ -357,9 +333,7 @@ nav a.active{
     0 18px 50px rgba(239,68,68,.15);
 }
 
-/* ===========================
-   Grid
-=========================== */
+/*Grid*/
 
 .grid{
 
@@ -385,9 +359,7 @@ nav a.active{
     repeat(auto-fit,minmax(220px,1fr));
 }
 
-/* ===========================
-   Utility
-=========================== */
+/*Utility*/
 
 .text-center{
 
@@ -439,18 +411,10 @@ nav a.active{
     display:none;
 }
 
-/* =========================================================
-   CyberAuth v2
-   Global Stylesheet
-   Part 1
-   ========================================================= */
-
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* ===========================
-   Variables
-=========================== */
+/*Variables*/
 
 :root{
 
@@ -475,9 +439,7 @@ nav a.active{
     --transition:.30s ease;
 }
 
-/* ===========================
-   Reset
-=========================== */
+/*Reset */
 
 *{
     margin:0;
@@ -509,9 +471,7 @@ body{
     line-height:1.6;
 }
 
-/* ===========================
-   Scrollbar
-=========================== */
+/*Scrollbar*/
 
 ::-webkit-scrollbar{
     width:10px;
@@ -530,9 +490,7 @@ body{
     background:var(--primary-dark);
 }
 
-/* ===========================
-   Typography
-=========================== */
+/*Typography*/
 
 h1{
 
@@ -567,9 +525,7 @@ img{
     max-width:100%;
 }
 
-/* ===========================
-   Layout
-=========================== */
+/*Layout*/
 
 .container{
 
@@ -587,9 +543,7 @@ img{
     padding:20px 0;
 }
 
-/* ===========================
-   Header
-=========================== */
+/*Header*/
 
 header{
 
@@ -605,7 +559,7 @@ header{
     border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-/* Navbar */
+/*Navbar*/
 
 .navbar{
 
@@ -629,9 +583,7 @@ header{
     letter-spacing:.5px;
 }
 
-/* ===========================
-   Navigation
-=========================== */
+/*Navigation*/
 
 nav{
 
@@ -667,9 +619,7 @@ nav a.active{
     color:white;
 }
 
-/* ===========================
-   Buttons
-=========================== */
+/*Buttons*/
 
 .btn{
 
@@ -758,9 +708,7 @@ nav a.active{
     width:100%;
 }
 
-/* ===========================
-   Cards
-=========================== */
+/*Cards*/
 
 .card{
 
@@ -785,9 +733,7 @@ nav a.active{
     0 18px 50px rgba(239,68,68,.15);
 }
 
-/* ===========================
-   Grid
-=========================== */
+/*Grid*/
 
 .grid{
 
@@ -813,9 +759,7 @@ nav a.active{
     repeat(auto-fit,minmax(220px,1fr));
 }
 
-/* ===========================
-   Utility
-=========================== */
+/*Utility*/
 
 .text-center{
 
@@ -867,15 +811,7 @@ nav a.active{
     display:none;
 }
 
-/* =========================================================
-   CyberAuth v2
-   Global Stylesheet
-   Part 3 - Authentication & Dashboard
-   ========================================================= */
-
-/* ===========================
-   Authentication Layout
-=========================== */
+/* Authentication Layout */
 
 .auth-wrapper{
 
@@ -925,9 +861,7 @@ nav a.active{
     margin-bottom:35px;
 }
 
-/* ===========================
-   Forms
-=========================== */
+/* Forms */
 
 .form-group{
 
@@ -994,9 +928,7 @@ nav a.active{
     color:#999;
 }
 
-/* ===========================
-   Password Hint
-=========================== */
+/* Password Hint */
 
 .password-hint{
 
@@ -1015,9 +947,7 @@ nav a.active{
     font-size:14px;
 }
 
-/* ===========================
-   Authentication Footer
-=========================== */
+/*Authentication Footer*/
 
 .auth-footer{
 
@@ -1038,9 +968,7 @@ nav a.active{
     color:white;
 }
 
-/* ===========================
-   Alerts
-=========================== */
+/* Alerts */
 
 .alert{
 
@@ -1091,9 +1019,7 @@ nav a.active{
     border-color:#3B82F6;
 }
 
-/* ===========================
-   SQL Injection Demo Box
-=========================== */
+/* SQL Injection Demo Box */
 
 .demo-box{
 
@@ -1127,9 +1053,7 @@ nav a.active{
     margin-top:15px;
 }
 
-/* ===========================
-   Dashboard Welcome
-=========================== */
+/* Dashboard Welcome */
 
 .dashboard-header{
 
@@ -1156,9 +1080,7 @@ nav a.active{
     color:#b8bec8;
 }
 
-/* ===========================
-   User Info Card
-=========================== */
+/* User Info Card */
 
 .profile-card{
 
@@ -1211,9 +1133,7 @@ nav a.active{
     margin:3px 0;
 }
 
-/* ===========================
-   Quick Action Cards
-=========================== */
+/* Quick Action Cards */
 
 .quick-actions{
 
@@ -1261,9 +1181,7 @@ nav a.active{
     font-size:15px;
 }
 
-/* ===========================
-   Login Method Badge
-=========================== */
+/* Login Method Badge */
 
 .login-method{
 
@@ -1292,9 +1210,7 @@ nav a.active{
     color:#ff9a9a;
 }
 
-/* ===========================
-   Fade Animation
-=========================== */
+/* Fade Animation */
 
 @keyframes fadeUp{
 
@@ -1313,16 +1229,7 @@ nav a.active{
     }
 }
 
-/* =========================================================
-   CyberAuth v2
-   Global Stylesheet
-   Part 4 - Admin Dashboard & Responsive
-   ========================================================= */
-
-
-/* ===========================
-   Tables
-=========================== */
+/* Tables */
 
 .table-wrapper{
 
@@ -1389,9 +1296,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Payload Column
-=========================== */
+/* Payload Column */
 
 .payload{
 
@@ -1415,9 +1320,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Badges
-=========================== */
+/* Badges */
 
 .badge{
 
@@ -1461,9 +1364,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Statistic Cards
-=========================== */
+/* Statistic Cards */
 
 .stats-grid{
 
@@ -1515,9 +1416,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Search Bar
-=========================== */
+/* Search Bar */
 
 .search-box{
 
@@ -1553,9 +1452,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Filters
-=========================== */
+/* Filters */
 
 .filter-bar{
 
@@ -1591,9 +1488,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Terminal Box
-=========================== */
+/* Terminal Box */
 
 .terminal{
 
@@ -1615,9 +1510,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Empty State
-=========================== */
+/* Empty State */
 
 .empty{
 
@@ -1629,9 +1522,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Footer Improvements
-=========================== */
+/* Footer Improvements */
 
 footer{
 
@@ -1644,9 +1535,7 @@ footer small{
 }
 
 
-/* ===========================
-   Responsive
-=========================== */
+/* Responsive */
 
 @media(max-width:992px){
 
@@ -1795,9 +1684,7 @@ tbody td{
 }
 
 
-/* ===========================
-   Animations
-=========================== */
+/* Animations */
 
 .fade-in{
 
@@ -1842,9 +1729,7 @@ to{
 }
 
 
-/* ===========================
-   Selection
-=========================== */
+/* Selection */
 
 ::selection{
 
@@ -1853,9 +1738,7 @@ to{
     color:white;
 }
 
-/* ===========================
-   Search Box
-=========================== */
+/* Search Box */
 
 .search-box{
     margin:30px 0;
@@ -1877,9 +1760,7 @@ to{
     box-shadow:0 0 10px rgba(255,59,59,.3);
 }
 
-/* ===========================
-   Payload Display
-=========================== */
+/* Payload Display */
 
 .payload{
     background:#0d1117;
@@ -1894,9 +1775,7 @@ to{
     max-width:420px;
 }
 
-/* ===========================
-   Empty State
-=========================== */
+/* Empty State */
 
 .empty{
     padding:40px;
@@ -2042,8 +1921,3 @@ to{
     color: #cbd5e1;
 }
 
-
-
-/* =========================================================
-   End of CyberAuth Stylesheet
-   ========================================================= */
